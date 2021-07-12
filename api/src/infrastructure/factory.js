@@ -4,5 +4,6 @@ module.exports = () => ({
   tasksRepository: {
     getTasks: tasksRepository.getTasks,
     addTask: tasksRepository.addTask,
+    updateTask: tasksRepository.updateTask,
   },
 })

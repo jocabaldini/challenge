@@ -1,4 +1,14 @@
 module.exports = (dependencies) => ({
+  getTasks: () => {
+    const apiStatusCodes = dependencies.helpers.getApiStatusCodes()
+    const statusCode = apiStatusCodes.OK
+    const heroes = dependencies.infrastructure.tasksRepository.getTasks()
+
+    return dependencies.helpers.makeReturn(statusCode.status, {
+      message: statusCode.message,
+      data: heroes,
+    })
+  },
   createTask: (task) => {
     const apiStatusCodes = dependencies.helpers.getApiStatusCodes()
     let statusCode = apiStatusCodes.UNPROCESSABLE_ENTITY
@@ -14,14 +24,15 @@ module.exports = (dependencies) => ({
       data: task,
     })
   },
-  getTasks: () => {
+  updateTask: (task) => {
     const apiStatusCodes = dependencies.helpers.getApiStatusCodes()
     const statusCode = apiStatusCodes.OK
-    const heroes = dependencies.infrastructure.tasksRepository.getTasks()
+
+    dependencies.infrastructure.tasksRepository.updateTask(task)
 
     return dependencies.helpers.makeReturn(statusCode.status, {
       message: statusCode.message,
-      data: heroes,
+      data: task,
     })
   },
 })

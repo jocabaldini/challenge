@@ -1,7 +1,7 @@
 module.exports = () => {
   const TASK_PENDENT = 0
   const TASK_DONE = 1
-  const tasks = [
+  let tasks = [
     {
       id: 1,
       description: "Tarefa 1",
@@ -102,6 +102,13 @@ module.exports = () => {
 
   return {
     getTasks: () => tasks,
-    addTask: (task) => tasks.push(task),
+    addTask: (task) => {
+      task.done = TASK_PENDENT
+      task.undoCount = 0
+      tasks.push(task)
+    },
+    updateTask: (task) => {
+      tasks = tasks.map((oldTask) => (oldTask.id === task.id ? task : oldTask))
+    },
   }
 }

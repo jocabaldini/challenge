@@ -32,6 +32,16 @@ export class TasksService {
     return tasks;
   }
 
+  updateTask(task: Task): Observable<Task> {
+    const tasks = this.http.put<Task>(this.tasksUrl, task)
+      .pipe(
+        tap(_ => this.log('fetched tasks')),
+        catchError(this.handleError<Task>('updateTask', task))
+      );
+
+    return tasks;
+  }
+
  /**
  * Handle Http operation that failed.
  * Let the app continue.

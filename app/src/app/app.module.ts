@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TaskComponent } from './task/task.component';
+import { TaskFormComponent } from './task-form/task-form.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TaskComponent } from './task/task.component';
     DashboardComponent,
     MessagesComponent,
     TodoListComponent,
-    TaskComponent
+    TaskComponent,
+    TaskFormComponent
   ],
   bootstrap: [ AppComponent ]
 })

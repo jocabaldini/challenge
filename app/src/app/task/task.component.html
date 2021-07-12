@@ -14,11 +14,11 @@
         <div class="col-4">
           <div *ngIf="task.done; else elseBlock">
             <div *ngIf="task.undoCount < 2">
-              <a href="#" class="btn btn-danger">Reprovar</a>
+              <button (click)="reprove()" class="btn btn-danger">Reprovar</button>
             </div>
           </div>
           <ng-template #elseBlock>
-            <a href="#" class="btn btn-primary">Concluir</a>
+            <button (click)="complete()" class="btn btn-primary">Concluir</button>
           </ng-template>
         </div>
         <div class="col-8 text-right">

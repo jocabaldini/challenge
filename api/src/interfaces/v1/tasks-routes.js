@@ -28,6 +28,17 @@ module.exports = (server, application, apiPrefix) => {
     }
   })
 
+  tasksRouter.put("", (req, res) => {
+    try {
+      const ret = application.updateTask(req.body)
+      return res.status(ret.statusCode).send(ret.data)
+    } catch (error) {
+      return res
+        .status(apiStatusCodes.INTERNAL_SERVER_ERROR.status)
+        .send(`Internal error: ${error}`)
+    }
+  })
+
   watchEndPoints.append(prefix, tasksRouter)
   server.use(prefix, tasksRouter)
 }

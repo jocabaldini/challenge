@@ -13,4 +13,5 @@ module.exports = () => ({
   dependencies: dependencies,
   createTask: tasks(dependencies).createTask,
   getTasks: tasks(dependencies).getTasks,
+  updateTask: tasks(dependencies).updateTask,
 })
