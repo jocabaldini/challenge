@@ -1,7 +1,10 @@
-<h2>{{title}}</h2>
-
-<div *ngFor="let task of tasks">
-  <app-task [task]="task"></app-task>
+<div class="container">
+  <h2>{{title}}</h2>
+  <div *ngFor="let task of tasks">
+    <div class="row mb-3">
+      <div class="col">
+        <app-task [task]="task"></app-task>
+      </div>
+    </div>
+  </div>
 </div>
-
-

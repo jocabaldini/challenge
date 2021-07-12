@@ -10,7 +10,21 @@
       </blockquote>
     </div>
     <div class="card-footer text-muted">
-      Desaprovada {{task.undoCount}} vezes
+      <div class="row">
+        <div class="col-4">
+          <div *ngIf="task.done; else elseBlock">
+            <div *ngIf="task.undoCount < 2">
+              <a href="#" class="btn btn-danger">Reprovar</a>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <a href="#" class="btn btn-primary">Concluir</a>
+          </ng-template>
+        </div>
+        <div class="col-8 text-right">
+          Reprovada {{task.undoCount}} vezes
+        </div>
+      </div>
     </div>
   </div>
 </div>

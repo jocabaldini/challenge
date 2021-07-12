@@ -8,9 +8,10 @@ import { TasksService } from '../tasks.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  tasks: Task[] = [];
   titlePendentList = 'Pendentes';
+  pendentTasks: Task[] = [];
   titleDoneList = 'Finalizados';
+  doneTasks: Task[] = [];
 
   constructor(private tasksService: TasksService) { }
 
@@ -19,7 +20,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getTasks(): void {
+    const PENDENT = 0;
+    const DONE = 1;
     this.tasksService.getTasks()
-      .subscribe(tasks => this.tasks = tasks);
+      .subscribe(tasks => {
+        this.pendentTasks = tasks.filter(task => task.done === PENDENT)
+        this.doneTasks = tasks.filter(task => task.done === DONE)
+      });
   }
 }
