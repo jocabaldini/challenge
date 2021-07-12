@@ -1,0 +1,16 @@
+<h2>Nova tarefa</h2>
+  <div class="form-group">
+    <label for="task-description">Descrição</label>
+    <input [(ngModel)]="task.description" id="task-description" type="text" class="form-control" placeholder="Descrição">
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="task-owner">Responsável</label>
+      <input [(ngModel)]="task.owner" id="task-owner" type="text" class="form-control">
+    </div>
+    <div class="form-group col">
+      <label for="task-mail">Email</label>
+      <input [(ngModel)]="task.mail" id="task-mail" type="email" class="form-control" placeholder="Email">
+    </div>
+  </div>
+  <button (click)="createTask()" class="btn btn-primary">Criar</button>

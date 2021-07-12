@@ -32,6 +32,16 @@ export class TasksService {
     return tasks;
   }
 
+  createTask(task: Task): Observable<Task> {
+    const tasks = this.http.post<Task>(this.tasksUrl, task)
+      .pipe(
+        tap(_ => this.log('fetched tasks')),
+        catchError(this.handleError<Task>('createTask', task))
+      );
+
+    return tasks;
+  }
+
   updateTask(task: Task): Observable<Task> {
     const tasks = this.http.put<Task>(this.tasksUrl, task)
       .pipe(

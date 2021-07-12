@@ -103,6 +103,8 @@ module.exports = () => {
   return {
     getTasks: () => tasks,
     addTask: (task) => {
+      console.log("chegou aqui!!!!!!!")
+      task.id = tasks[tasks.length - 1].id + 1
       task.done = TASK_PENDENT
       task.undoCount = 0
       tasks.push(task)
